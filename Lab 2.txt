@@ -1,0 +1,5 @@
+tipo de variales (primitivos y reference)
+
+array multidimensional [][] es mas rapido el de mas a la derecha 
+
+con los operadores se homogeniza el tipo de resultado al tipo de mayor capacidad 
