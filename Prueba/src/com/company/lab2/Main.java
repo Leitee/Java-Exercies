@@ -23,9 +23,13 @@ public class Main {
         //System.out.print((prime(5) ? "Es primo" : "No es primo"));
         //System.out.print(fibonacci(-2));
         //System.out.print(esContenido("hola", "hola ameo"));
-        var matrix = crearMatriz(3,2);
-        cargarMatriz(matrix);
-        leerMatriz(matrix);
+        var matrizA = crearMatriz(3,2);
+        var matrizB = crearMatriz(2,3);
+        //Matriz matrizA = new Matriz(3,2);
+        //Matriz matrizB = new Matriz(2, 3);
+        //cargarMatriz(matrizA);
+        //cargarMatriz(matrizB);
+        leerMatriz(multiplicarMatrices(matrizA, matrizB));
     }
 
     private static void dibujar(int altura , int anchura) {
@@ -99,12 +103,12 @@ public class Main {
         return new int[fila] [col];
     }
 
-    private static void cargarMatriz(int[][] matriz) {
+    private static void cargarMatriz(Matriz matriz) {
         Scanner sc = new Scanner(System.in);
 
-        for (int i = 0; i < matriz.length; i++) {
-            for (int j = 0; j < matriz[i].length; j++) {
-                matriz[i][j] = sc.nextInt();
+        for (int i = 0; i < matriz.getFilas(); i++) {
+            for (int j = 0; j < matriz.getColumnas(); j++) {
+                matriz.getDato()[i][j] = sc.nextInt();
             }
         }
     }
@@ -112,8 +116,26 @@ public class Main {
     private static void leerMatriz(int[][] matriz) {
         for (int i = 0; i < matriz.length; i++) {
             for (int j = 0; j < matriz[i].length; j++) {
-                System.out.print(matriz[i][j]);
+                System.out.print(String.format("[%d]",matriz[i][j]));
             }
         }
+    }
+
+    private static int[][] multiplicarMatrices(int[][] matzA, int[][] matzB) {
+        int[][] c = new int[matzA.length][matzB[0].length];
+
+        if (matzA[0].length != matzB.length) {
+            throw new RuntimeException("Las dimensiones de las matrices no son aptas para esta operacion.");
+        }
+
+        for (int fila = 0; fila < matzA.length; fila++) {
+            for (int columna = 0; columna < matzB[0].length; columna++) {
+                for (int k = 0; k < matzA[0].length; k++) {
+                    c[fila][columna] += matzA[fila][k] * matzB[k][columna];
+                }
+            }
+        }
+
+        return c;
     }
 }
