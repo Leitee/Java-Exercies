@@ -19,7 +19,7 @@ public class Main {
         System.out.println(ac.toString());*/
 
         //dibujar(5,7);
-        //System.out.print(factorial(5));
+        System.out.print(factorial(1));
         //System.out.print((prime(5) ? "Es primo" : "No es primo"));
         //System.out.print(fibonacci(-2));
         //System.out.print(esContenido("hola", "hola ameo"));
@@ -29,7 +29,7 @@ public class Main {
         //Matriz matrizB = new Matriz(2, 3);
         //cargarMatriz(matrizA);
         //cargarMatriz(matrizB);
-        leerMatriz(multiplicarMatrices(matrizA, matrizB));
+        //leerMatriz(multiplicarMatrices(matrizA, matrizB));
     }
 
     private static void dibujar(int altura , int anchura) {
