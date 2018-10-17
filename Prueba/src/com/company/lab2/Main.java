@@ -7,6 +7,11 @@ public class Main {
 
     public static void main(String[] args) {
 
+        var author =  new Author();
+        var libro = new Book("", author, 15);
+
+
+
         /*System.out.println("There are " + Array.getLength(args) + " params.");
 
         for (var arg : args){
