@@ -1,0 +1,114 @@
+<html>
+<head>
+<title>Summary.java</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #cc7832;}
+.s1 { color: #a9b7c6;}
+.s2 { color: #6897bb;}
+.s3 { color: #808080;}
+</style>
+</head>
+<body bgcolor="#2b2b2b">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Summary.java</font>
+</center></td></tr></table>
+<pre><span class="s0">package </span><span class="s1">utn.frre.lab2</span><span class="s0">;</span>
+
+import <span class="s1">java.time.Period</span><span class="s0">;</span>
+import <span class="s1">java.util.Date</span><span class="s0">;</span>
+
+public class <span class="s1">Summary </span><span class="s0">extends </span><span class="s1">TaskGroup {</span>
+
+    <span class="s0">public </span><span class="s1">Summary(</span><span class="s0">int </span><span class="s1">id</span><span class="s0">, </span><span class="s1">String name</span><span class="s0">, </span><span class="s1">Task firstTask) {</span>
+        <span class="s0">super</span><span class="s1">(id</span><span class="s0">, </span><span class="s1">name</span><span class="s0">, </span><span class="s1">firstTask.startDate)</span><span class="s0">;</span>
+        this<span class="s1">.nextTask = firstTask</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    @Override
+    <span class="s0">public float </span><span class="s1">getCost() {</span>
+        <span class="s0">float </span><span class="s1">cost = </span><span class="s2">0</span><span class="s0">;</span>
+        <span class="s1">TaskBase t = nextTask</span><span class="s0">;</span>
+        while <span class="s1">(t.hasNextTask()) {</span>
+            cost += t.getCost()<span class="s0">;</span>
+        <span class="s1">}</span>
+
+        <span class="s0">return </span><span class="s1">cost</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    @Override
+    <span class="s0">public </span><span class="s1">Period getDuration() {</span>
+        <span class="s0">return null;</span>
+    <span class="s1">}</span>
+
+    @Override
+    <span class="s0">public </span><span class="s1">String toString() {</span>
+        StringBuilder sb = <span class="s0">new </span><span class="s1">StringBuilder()</span><span class="s0">;</span>
+        <span class="s1">TaskBase temp = </span><span class="s0">this</span><span class="s1">.nextTask</span><span class="s0">;</span>
+        while <span class="s1">(temp.hasNextTask()) {</span>
+            sb.append(temp.toString())<span class="s0">;</span>
+            <span class="s1">temp = nextTask.getNextTask()</span><span class="s0">;</span>
+        <span class="s1">}</span>
+        <span class="s0">return </span><span class="s1">sb.toString()</span><span class="s0">;</span>
+    <span class="s1">}</span>
+
+    <span class="s3">/* 
+    private int id; 
+    private TaskGroup firstTask; 
+    private int taskCount; 
+ 
+    public Summary(int id) { 
+        this.id = id; 
+        taskCount = 0; 
+    } 
+ 
+    public boolean isEmpty() { 
+        return firstTask == null; 
+    } 
+ 
+    public void addTask(int taskId, String taskName, Date taskStartDate, List&lt;Resource&gt; resources) { 
+        Task t = new Task(taskId, taskName, taskStartDate, resources); 
+ 
+        if (this.isEmpty()) { 
+            firstTask = t; 
+        } 
+        else { 
+            Task last = this.getLastTask(); 
+            last.closeTask(taskStartDate); 
+            last.setNextTask(t); 
+        } 
+        this.taskCount ++; 
+    } 
+ 
+    public Task getTaskById(int taskId) { 
+        Task t = firstTask; 
+        while (t.hasNextTask()) { 
+            if (t.getId() == taskId) { 
+                return t; 
+            } 
+        } 
+        return null; 
+    } 
+ 
+    public void setTaskResources(int taskId, Resource resource) { 
+        Task t = getTaskById(taskId); 
+        if(t == null) { throw new ProjectCustomException(&quot;No existe Tarea con id: &quot; + taskId); }; 
+        t.setResources(resource); 
+    } 
+ 
+    public Task getLastTask() { 
+        Task temp = this.firstTask; 
+        while (temp.hasNextTask()) { 
+            temp = firstTask.getNextTask(); 
+        } 
+        return temp; 
+    } 
+ 
+ 
+    */</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

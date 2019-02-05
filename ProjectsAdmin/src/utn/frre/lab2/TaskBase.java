@@ -8,6 +8,7 @@ abstract class TaskBase {
     protected Date startDate;
     protected Date endDate;
     protected float progress;
+    protected TaskBase nextTask;
 
     public int getId() {
         return id;
@@ -27,11 +28,21 @@ abstract class TaskBase {
     public void setProgress(float progress) {
         this.progress = progress;
     }
+    public void setNextTask(TaskBase nextTask) {
+        this.nextTask = nextTask;
+    }
+    public TaskBase getNextTask() {
+        return nextTask;
+    }
 
     public TaskBase(int id, String name, Date startDate) {
         this.id = id;
         this.name = name;
         this.startDate = startDate;
+    }
+
+    public boolean hasNextTask() {
+        return this.nextTask != null;
     }
 
     @Override

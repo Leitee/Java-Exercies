@@ -3,6 +3,18 @@
 title __PROJECTSADMIN's Class Diagram__\n
 
   package utn.frre.lab2 {
+    class Hito {
+    }
+  }
+  
+
+  package utn.frre.lab2 {
+    interface ICalculable {
+    }
+  }
+  
+
+  package utn.frre.lab2 {
     class Programmer {
     }
   }
@@ -10,6 +22,12 @@ title __PROJECTSADMIN's Class Diagram__\n
 
   package utn.frre.lab2 {
     class Project {
+    }
+  }
+  
+
+  package utn.frre.lab2 {
+    class ProjectCustomException {
     }
   }
   
@@ -32,8 +50,32 @@ title __PROJECTSADMIN's Class Diagram__\n
   }
   
 
+  package utn.frre.lab2 {
+    abstract class TaskBase {
+    }
+  }
+  
+
+  package utn.frre.lab2 {
+    abstract class TaskGroup {
+    }
+  }
+  
+
+  package utn.frre.lab2 {
+    class TestProject {
+    }
+  }
+  
+
+  Hito -up-|> TaskBase
   Programmer -up-|> Resource
-  Task o-- Task : nextTask
+  Project -up-|> TaskGroup
+  Summary -up-|> TaskGroup
+  Task -up-|> TaskGroup
+  TaskBase o-- TaskBase : nextTask
+  TaskGroup -up-|> ICalculable
+  TaskGroup -up-|> TaskBase
 
 
 right footer

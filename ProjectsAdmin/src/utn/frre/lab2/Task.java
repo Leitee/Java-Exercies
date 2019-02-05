@@ -23,6 +23,12 @@ public class Task extends TaskGroup {
     }
 
     @Override
+    public void setNextTask(TaskBase nextTask) {
+        closeTask(nextTask.startDate);
+        super.setNextTask(nextTask);
+    }
+
+    @Override
     public float getCost() {
         float cost = 0;
         for (Resource r : resources) {
@@ -37,12 +43,6 @@ public class Task extends TaskGroup {
                 LocalDate.ofEpochDay(getStartDate().getTime()),
                 LocalDate.ofEpochDay(getEndDate().getTime())
         );
-    }
-
-    @Override
-    public void closeTask(Date endDate) {
-        this.progress = 100;
-        this.endDate = endDate;
     }
 
     @Override
